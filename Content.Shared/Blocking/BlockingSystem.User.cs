@@ -1,3 +1,6 @@
+// <Trauma>
+using Content.Trauma.Common.Blocking;
+// </Trauma>
 using System.Linq;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
@@ -46,8 +49,15 @@ public sealed partial class BlockingSystem
         if (component.BlockingItem is not { } item || !TryComp<BlockingComponent>(item, out var blocking))
             return;
 
-        if (!_toggle.IsActivated(component.BlockingItem.Value)) // Goobstation
+        if (!_toggle.IsActivated(item)) // Goobstation
             return;
+
+        // <Trauma>
+        var attemptEv = new BlockAttemptEvent(uid);
+        RaiseLocalEvent(item, ref attemptEv);
+        if (attemptEv.Cancelled)
+            return;
+        // </Trauma>
 
         if (args.Damage.GetTotal() <= 0)
             return;
@@ -93,7 +103,6 @@ public sealed partial class BlockingSystem
             return;
 
         StopBlockingHelper(component.BlockingItem.Value, blockingComponent, uid);
-
     }
 
     /// <summary>

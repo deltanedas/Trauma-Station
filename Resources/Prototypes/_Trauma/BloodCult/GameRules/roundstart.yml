@@ -1,0 +1,34 @@
+- type: entity
+  parent: BaseGameRule
+  id: BloodCult
+  components:
+  - type: GameRule
+    minPlayers: 30
+  - type: BloodCultRule
+  - type: AntagObjectives
+    objectives:
+    - KillTargetCultObjective
+    - SummonNarSieCultObjective
+  - type: AntagSelection
+    definitions:
+    - prefRoles: [ BloodCultist ]
+      max: 1
+      min: 1
+      briefing:
+        text: blood-cult-role-greeting
+        color: Red
+        sound: "/Audio/_Trauma/BloodCult/blood_cult_greeting.ogg"
+      startingGear: BloodCultistGear
+      mindRoles:
+      - MindRoleBloodCultLeader
+    - prefRoles: [ BloodCultist ]
+      max: 3
+      min: 1
+      playerRatio: 15
+      briefing:
+        text: blood-cult-role-greeting
+        color: Red
+        sound: "/Audio/_Trauma/BloodCult/blood_cult_greeting.ogg"
+      startingGear: BloodCultistGear
+      mindRoles:
+      - MindRoleBloodCultist

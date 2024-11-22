@@ -12,7 +12,7 @@ public sealed partial class VentCrawlingSystem : EntitySystem
 {
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IPlayerManager _player = default!;
-    [Dependency] private SubFloorHideSystem _subFloorHideSystem = default!;
+    [Dependency] private SubFloorHideSystem _subFloorHide = default!;
 
     public override void Update(float frameTime)
     {
@@ -21,13 +21,11 @@ public sealed partial class VentCrawlingSystem : EntitySystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        var player = _player.LocalPlayer?.ControlledEntity;
+        var player = _player.LocalEntity;
 
-        var ventCrawlerQuery = GetEntityQuery<VentCrawlerComponent>();
-
-        if (!ventCrawlerQuery.TryGetComponent(player, out var playerVentCrawlerComponent))
+        if (!TryComp<VentCrawlerComponent>(player, out var comp))
             return;
 
-        _subFloorHideSystem.ShowVentPipe = playerVentCrawlerComponent.InTube;
+        _subFloorHide.ShowVentPipe = comp.InTube;
     }
 }

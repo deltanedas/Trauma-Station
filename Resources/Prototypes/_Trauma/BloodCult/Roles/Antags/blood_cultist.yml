@@ -1,0 +1,25 @@
+- type: antag
+  id: BloodCultist
+  name: roles-antag-blood-cultist-name
+  antagonist: true
+  setPreference: true
+  objective: roles-antag-blood-cultist-objective
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 2h
+
+- type: startingGear
+  id: BloodCultistGear
+  storage:
+    back:
+    - RitualDagger
+    - RunedMetal20
+
+- type: antagSmite
+  id: BloodCultist
+  antag: BloodCultist
+  rule: BloodCult
+  ruleComp: BloodCultRule
+  icon:
+    sprite: Objects/Weapons/Melee/cult_dagger.rsi
+    state: icon

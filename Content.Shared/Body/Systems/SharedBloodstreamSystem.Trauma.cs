@@ -57,4 +57,11 @@ public abstract partial class SharedBloodstreamSystem
         return flushedSolution.Volume == 0 ? null : flushedSolution;
     }
 
+    /// <summary>
+    /// Drains all blood from a mob, returning the solution.
+    /// </summary>
+    public Solution? DrainBlood(Entity<BloodstreamComponent?> ent)
+        => SolutionContainer.ResolveSolution(ent.Owner, ent.Comp.BloodSolutionName, ref ent.Comp.BloodSolution, out var solution)
+            ? SolutionContainer.SplitSolution(ent.Comp.BloodSolution.Value, solution.Volume)
+            : null;
 }

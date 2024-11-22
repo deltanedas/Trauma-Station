@@ -1,0 +1,47 @@
+- type: runeSelector
+  id: CultRuneOffering
+  prototype: CultRuneOffering
+
+- type: runeSelector
+  id: CultRuneEmpower
+  prototype: CultRuneEmpower
+
+- type: runeSelector
+  id: CultRuneTeleport
+  prototype: CultRuneTeleport
+
+- type: runeSelector
+  id: CultRuneRevive
+  prototype: CultRuneRevive
+
+- type: runeSelector
+  id: CultRuneBarrier
+  prototype: CultRuneBarrier
+
+- type: runeSelector
+  id: CultRuneSummoning
+  prototype: CultRuneSummoning
+
+- type: runeSelector
+  id: CultRuneBloodBoil
+  prototype: CultRuneBloodBoil
+
+- type: runeSelector
+  id: CultRuneApocalypse
+  prototype: CultRuneApocalypse
+  drawTime: 40
+  drawDamage:
+    types:
+      Slash: 20
+  # TODO: limit to the cult special areas
+
+- type: runeSelector
+  id: CultRuneDimensionalRending
+  prototype: CultRuneDimensionalRending
+  drawTime: 40
+  drawDamage:
+    types:
+      Slash: 50
+  # TODO: limit to the cult special areas
+  # TODO: cant draw if you didnt sacrafice the target yet
+  # TODO: announcement when drawing it

@@ -16,7 +16,6 @@ using Content.Trauma.Common.Roles;
 using Content.Trauma.Server.StationEvents.Components;
 using Content.Trauma.Shared.Roles;
 using Robust.Shared.Containers;
-using Robust.Shared.Utility;
 using System.Linq;
 
 namespace Content.Trauma.Server.StationEvents.Events;

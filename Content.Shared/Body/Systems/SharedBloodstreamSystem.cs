@@ -484,7 +484,8 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
     /// <summary>
     /// Removes blood by spilling out the bloodstream.
     /// </summary>
-    public bool TryBleedOut(Entity<BloodstreamComponent?> ent, FixedPoint2 amount)
+    public bool TryBleedOut(Entity<BloodstreamComponent?> ent, FixedPoint2 amount,
+        bool createPuddle = true) // Trauma
     {
         if (!Resolve(ent, ref ent.Comp, logMissing: false)
             || !SolutionContainer.ResolveSolution(ent.Owner, ent.Comp.BloodSolutionName, ref ent.Comp.BloodSolution)
@@ -500,7 +501,7 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
 
         tempSolution.AddSolution(leakedBlood, PrototypeManager);
 
-        if (tempSolution.Volume > ent.Comp.BleedPuddleThreshold)
+        if (tempSolution.Volume > ent.Comp.BleedPuddleThreshold && createPuddle) // Trauma - check createPuddle
         {
             // <Goob> - Set the freshness when the spill is created instead of every time new blood is created
             var now = _timing.CurTime;

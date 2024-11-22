@@ -1,0 +1,224 @@
+- type: entity
+  abstract: true
+  parent: BaseAction
+  id: BaseActionBloodCult
+  components:
+  - type: Sprite
+    sprite: _Trauma/BloodCult/actions.rsi
+  - type: Action
+    itemIconStyle: BigAction
+    charges: 1
+    temporary: true
+  - type: CultSpell
+  - type: Magic
+    requiresSpeech: true
+  - type: SpeakOnAction
+
+- type: entity
+  parent: BaseActionBloodCult
+  id: ActionBloodCultStun
+  name: Stun
+  description: Empowers your hand to stun and mute a victim on contact.
+  components:
+  - type: Sprite
+    state: stun
+  - type: Action
+    icon:
+      sprite: _Trauma/BloodCult/actions.rsi
+      state: stun
+  - type: TargetAction
+    checkCanAccess: false
+    interactOnMiss: false
+    range: 3
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - Body
+    event: !type:EffectTargetActionEvent
+  - type: SpeakOnAction
+    sentence: blood-cult-action-stun
+  - type: EffectAction
+    effects:
+    - !type:GenericStatusEffect
+      key: Muted
+      component: Muted
+      time: 12
+    - !type:ModifyParalysis
+      time: 16
+
+- type: entity
+  parent: BaseActionBloodCult
+  id: ActionBloodCultTeleport
+  name: Teleport
+  description: Empowers your hand to teleport yourself or another cultist to a teleport rune on contact.
+  components:
+  - type: Sprite
+    state: teleport
+  - type: Action
+    raiseOnAction: true
+    icon:
+      sprite: _Trauma/BloodCult/actions.rsi
+      state: teleport
+  - type: TargetAction
+    checkCanAccess: false
+    interactOnMiss: false
+    range: 3
+  - type: EntityTargetAction
+    whitelist:
+      components:
+      - BloodCultist
+    event: !type:BloodCultTeleportEvent
+  - type: CultTeleportAction
+  - type: UserInterface
+    interfaces:
+      enum.ListViewSelectorUiKey.Key:
+        type: ListViewSelectorBUI
+        requireInputValidation: false
+        interactionRange: 0 # action does its own validating, this would break it
+  - type: SpeakOnAction
+    sentence: blood-cult-action-teleport
+
+- type: entity
+  parent: BaseActionBloodCult
+  id: ActionBloodCultEmp
+  name: Electromagnetic Pulse
+  description: Emits a large electromagnetic pulse.
+  components:
+  - type: Sprite
+    state: create_emp
+  - type: Action
+    icon:
+      sprite: _Trauma/BloodCult/actions.rsi
+      state: create_emp
+  - type: InstantAction
+    event: !type:EffectInstantActionEvent
+  - type: EffectAction
+    effects:
+    - !type:Emp
+      rangeModifier: 4
+      energyConsumption: 1000
+      duration: 20
+  - type: SpeakOnAction
+    sentence: blood-cult-action-emp
+
+- type: entity
+  parent: BaseActionBloodCult
+  id: ActionBloodCultShadowShackles
+  name: Shadow Shackles
+  description: Empowers your hand to handcuff a victim on contact, and mute them if successful.
+  components:
+  - type: Sprite
+    state: shackles
+  - type: Action
+    icon:
+      sprite: _Trauma/BloodCult/actions.rsi
+      state: shackles
+  - type: LimitedCharges
+    maxCharges: 4
+  - type: TargetAction
+    checkCanAccess: false
+    range: 3
+    interactOnMiss: false
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - Body
+    event: !type:BloodCultShacklesEvent
+  - type: SpeakOnAction
+    sentence: blood-cult-action-shadow-shackles
+
+- type: entity
+  parent: BaseActionBloodCult
+  id: ActionBloodCultTwistedConstruction
+  name: Twisted Construction
+  description: Empowers your hand to corrupt certain metallic objects.
+  components:
+  - type: Sprite
+    state: transmute
+  - type: Action
+    icon:
+      sprite: _Trauma/BloodCult/actions.rsi
+      state: transmute
+  - type: TargetAction
+    checkCanAccess: false
+    interactOnMiss: false
+    range: 3
+  - type: EntityTargetAction
+    canTargetSelf: false
+    whitelist:
+      components:
+      - TwistedConstructionTarget
+    event: !type:BloodCultTwistedConstructionEvent
+  - type: SpeakOnAction
+    sentence: blood-cult-action-twisted-construction
+
+- type: entity
+  parent: BaseActionBloodCult
+  id: ActionBloodCultSummonCombatEquipment
+  name: summon combat equipment
+  description: Allows you to summon combat cult gear. Includes cult armor, a cult bola and a cult sword.
+  components:
+  - type: Sprite
+    state: summon_combat_equipment
+  - type: Action
+    icon:
+      sprite: _Trauma/BloodCult/actions.rsi
+      state: summon_combat_equipment
+  - type: InstantAction
+    event: !type:EffectInstantActionEvent
+  - type: EffectAction
+    effects:
+    - !type:SpawnEquipment
+      slots:
+        outerClothing: ClothingOuterCultArmor
+    - !type:SpawnHeldItems
+      items:
+      - EldritchLongsword
+      - CultBola
+  - type: SpeakOnAction
+    sentence: blood-cult-action-summon-equipment
+
+- type: entity
+  parent: BaseActionBloodCult
+  id: ActionBloodCultSummonRitualDagger
+  name: summon ritual dagger
+  description: Allows you to summon a ritual dagger, in case you've lost the dagger that was given to you.
+  components:
+  - type: Sprite
+    state: summon_dagger
+  - type: Action
+    icon:
+      sprite: _Trauma/BloodCult/actions.rsi
+      state: summon_dagger
+  - type: InstantAction
+    event: !type:EffectInstantActionEvent
+  - type: EffectAction
+    effects:
+    - !type:SpawnHeldItems
+      items: [ RitualDagger ]
+  - type: SpeakOnAction
+    sentence: blood-cult-action-summon-equipment
+
+- type: entity
+  parent: BaseActionBloodCult
+  id: ActionBloodCultBloodRites
+  name: blood rites
+  description: Empowers your hand to absorb blood to be used for advanced rites, or heal a cultist on contact. Use the spell in-hand to cast advanced rites
+  components:
+  - type: Sprite
+    state: blood_rites
+  - type: Action
+    icon:
+      sprite: _Trauma/BloodCult/actions.rsi
+      state: blood_rites
+    useDelay: 3
+  - type: InstantAction
+    event: !type:EffectInstantActionEvent
+  - type: EffectAction
+    effects:
+    - !type:SpawnHeldItems
+      items: [ BloodRitesAura ]
+  - type: SpeakOnAction
+    sentence: blood-cult-action-blood-rites

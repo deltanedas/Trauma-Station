@@ -147,7 +147,7 @@ public sealed partial class SimpleRadialMenu : RadialMenu
             button.OnPressed += _ =>
             {
                 actionOption.OnPressed?.Invoke();
-                if (!haveNested)
+                if (!haveNested && CloseOnPressed) // Trauma - check CloseOnPressed
                     Close();
             };
         }

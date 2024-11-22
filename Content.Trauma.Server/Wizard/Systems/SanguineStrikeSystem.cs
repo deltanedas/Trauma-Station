@@ -26,6 +26,7 @@ public sealed partial class SanguineStrikeSystem : SharedSanguineStrikeSystem
     [Dependency] private SharedSolutionContainerSystem _solution = default!;
     [Dependency] private PuddleSystem _puddle = default!;
     [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private EntityQuery<TrailComponent> _trailQuery = default!;
 
     public override void Initialize()
     {
@@ -86,13 +87,12 @@ public sealed partial class SanguineStrikeSystem : SharedSanguineStrikeSystem
 
         var xform = Transform(user);
 
-        var trailQuery = GetEntityQuery<TrailComponent>();
         foreach (var target in targets)
         {
             var ent = Spawn(particle, xform.Coordinates);
             _transform.SetParent(ent, Transform(ent), user, xform);
 
-            if (!trailQuery.TryComp(ent, out var comp))
+            if (!_trailQuery.TryComp(ent, out var comp))
                 continue;
 
             comp.SpawnEntityPosition = target;

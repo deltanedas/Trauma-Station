@@ -103,7 +103,7 @@ public sealed partial class ListViewSelectorBUI(EntityUid owner, Enum uiKey) : B
             button.OnButtonUp += _ =>
             {
                 var msg = new ListViewItemSelectedMessage(item, items.IndexOf(item), _metaData);
-                SendMessage(msg);
+                SendPredictedMessage(msg);
                 Close();
             };
 

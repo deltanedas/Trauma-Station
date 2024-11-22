@@ -98,19 +98,18 @@
   - AllHostile
   #- Wizard # Goob
   - Xenoborg
-  # <Goob>
+  # <Trauma>
   - Heretic
   - Blob
   - PirateFaction
   - Lavafauna
-  # <Trauma>
+  - BloodCult
   - Insurgent
-  # </Trauma>
   friendly:
   - Wizard # was hostile, now they're friendly
   - Shadowling
   - Wraith
-  # </Goob>
+  # </Trauma>
 
 - type: npcFaction
   id: SimpleNeutral
@@ -265,6 +264,10 @@
 - type: npcFaction
   id: Wizard
   hostile:
+  # <Trauma>
+  - Insurgent
+  - BloodCult
+  # </Trauma>
   - NanoTrasen
   - Dragon
   - Mouse
@@ -278,9 +281,6 @@
   - Revolutionary
   - AllHostile
   - Xenoborg
-  # <Trauma>
-  - Insurgent
-  # </Trauma>
 
 - type: npcFaction
   id: Xenoborg

@@ -1,3 +1,6 @@
+// <Trauma>
+using Content.Shared.Whitelist;
+// </Trauma>
 using Content.Server.Stunnable.Components;
 using Content.Shared.Movement.Systems;
 using JetBrains.Annotations;
@@ -9,6 +12,9 @@ namespace Content.Server.Stunnable.Systems;
 [UsedImplicitly]
 internal sealed partial class StunOnCollideSystem : EntitySystem
 {
+    // <Trauma>
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
+    // </Trauma>
     [Dependency] private StunSystem _stunSystem = default!;
     [Dependency] private MovementModStatusSystem _movementMod = default!;
 
@@ -22,6 +28,10 @@ internal sealed partial class StunOnCollideSystem : EntitySystem
 
     private void TryDoCollideStun(Entity<StunOnCollideComponent> ent, EntityUid target)
     {
+        // <Trauma>
+        if (_whitelist.IsWhitelistPass(ent.Comp.Blacklist, target))
+            return;
+        // </Trauma>
         _stunSystem.TryKnockdown(target, ent.Comp.KnockdownAmount, ent.Comp.Refresh, ent.Comp.AutoStand, ent.Comp.Drop, true);
 
         if (ent.Comp.Refresh)

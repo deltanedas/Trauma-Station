@@ -1,17 +1,20 @@
+// <Trauma>
+using Content.Trauma.Common.Charges;
+// </Trauma>
 using Content.Shared.Actions.Events;
 using Content.Shared.Charges.Components;
 using Content.Shared.Examine;
 using Content.Shared.Rejuvenate;
 using JetBrains.Annotations;
 using Robust.Shared.Timing;
-using Content.Shared.FixedPoint;
-using Content.Trauma.Common.Charges; // Trauma
 
 namespace Content.Shared.Charges.Systems;
 
 public abstract partial class SharedChargesSystem : EntitySystem
 {
-    [Dependency] private SharedAppearanceSystem _appearance = default!; // Trauma
+    // <Trauma>
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    // </Trauma>
     [Dependency] protected IGameTiming _timing = default!;
 
     /*

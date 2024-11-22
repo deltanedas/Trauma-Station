@@ -181,6 +181,13 @@
   name: plasteel
   suffix: Full
   components:
+  # <Trauma>
+  - type: ShortConstruction
+    prototypes:
+    - SecureWindoor
+  - type: TwistedConstructionTarget
+    replacementProto: RunedMetal1
+  # </Trauma>
   - type: Material
   - type: PhysicalComposition
     materialComposition:
@@ -213,6 +220,10 @@
         - ReagentId: Carbon
           Quantity: 1
         canReact: false
+  - type: ActivatableUI
+    key: enum.RadialSelectorUiKey.Key
+    inHandsOnly: true
+    requireActiveHand: false
 
 - type: entity
   parent: SheetPlasteel
