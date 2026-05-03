@@ -3,6 +3,7 @@
 using Content.Goobstation.Common.Barks;
 using Content.Shared.Humanoid;
 using Content.Shared.Random.Helpers;
+using Content.Trauma.Common.Humanoid;
 using Content.Trauma.Common.Knowledge;
 using Content.Trauma.Common.Knowledge.Systems;
 using Robust.Shared.Prototypes;
@@ -11,7 +12,7 @@ using Robust.Shared.Random;
 namespace Content.Shared.Preferences;
 
 /// <summary>
-/// Trauma - settings for barks and skills
+/// Trauma - extra profile data
 /// </summary>
 public sealed partial class HumanoidCharacterProfile
 {
@@ -23,6 +24,12 @@ public sealed partial class HumanoidCharacterProfile
     /// </summary>
     [DataField]
     public KnowledgeProfile Knowledge = new();
+
+    /// <summary>
+    /// The beastmen-specific profile data.
+    /// </summary>
+    [DataField]
+    public BeastProfile? Beast;
 
     public static ProtoId<BarkPrototype> RandomBark(IPrototypeManager proto, string species)
     {
@@ -38,14 +45,13 @@ public sealed partial class HumanoidCharacterProfile
     }
 
     public HumanoidCharacterProfile WithBarkVoice(ProtoId<BarkPrototype> barkVoice)
-    {
-        return new(this) { BarkVoice = barkVoice };
-    }
+        => new(this) { BarkVoice = barkVoice };
 
     public HumanoidCharacterProfile WithKnowledge(KnowledgeProfile knowledge)
-    {
-        return new(this) { Knowledge = knowledge };
-    }
+        => new(this) { Knowledge = knowledge };
+
+    public HumanoidCharacterProfile WithBeast(BeastProfile? beast)
+        => new(this) { Beast = beast };
 
     private void EnsureValidTrauma(IDependencyCollection collection, IPrototypeManager proto)
     {
@@ -56,5 +62,15 @@ public sealed partial class HumanoidCharacterProfile
         var knowledge = entMan.System<CommonKnowledgeSystem>();
         var parent = proto.Index(Species).Knowledge;
         knowledge.EnsureProfileValid(parent, ref Knowledge);
+
+        if (proto.Index(Species).Beast)
+        {
+            Beast ??= new();
+            Beast.EnsureValid(proto);
+        }
+        else
+        {
+            Beast = null;
+        }
     }
 }

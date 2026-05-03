@@ -52,6 +52,15 @@ public sealed partial class MutationSystem : CommonMutationSystem
     public HashSet<EntProtoId<MutationComponent>> UnlockedMutations = new();
 
     /// <summary>
+    /// All mutations which have a <c>beastPoints</c> set, and their points.
+    /// </summary>
+    public Dictionary<EntProtoId<MutationComponent>, int> BeastMutations = new();
+    /// <summary>
+    /// All <see cref="BeastMutations"/> organised by their points.
+    /// </summary>
+    public Dictionary<int, List<EntProtoId<MutationComponent>>> BeastMutationsByPoints = new();
+
+    /// <summary>
     /// Per-round data for each mutation, e.g. its bases.
     /// Server only as clients knowing every mutation would be silly.
     /// </summary>

@@ -13,7 +13,7 @@ namespace Content.Trauma.Server.Abductor;
 
 public sealed partial class AbductorVestDisguiseSystem : EntitySystem
 {
-    [Dependency] private HumanoidProfileSystem _humanoidProfile = default!;
+    [Dependency] private HumanoidProfileSystem _humanoid = default!;
     [Dependency] private SharedVisualBodySystem _visualBody = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
     [Dependency] private IdentitySystem _identity = default!;
@@ -90,7 +90,7 @@ public sealed partial class AbductorVestDisguiseSystem : EntitySystem
         if (disguise.OriginalOrganData != null && !allowRepeatedDisguise)
             return;
 
-        disguise.OriginalProfile ??= _humanoidProfile.CreateProfile(user);
+        disguise.OriginalProfile ??= _humanoid.CreateProfile(user);
         if (disguise.OriginalProfile is not { } ourProfile)
             return;
 
@@ -102,7 +102,7 @@ public sealed partial class AbductorVestDisguiseSystem : EntitySystem
         disguiseProfile ??= HumanoidCharacterProfile.RandomWithSpecies("Human");
         disguiseProfile = disguiseProfile.WithKnowledge(ourProfile.Knowledge);
         _visualBody.ApplyProfileTo(user, disguiseProfile);
-        _humanoidProfile.ApplyProfileTo(user, disguiseProfile);
+        _humanoid.ApplyProfileTo(user, disguiseProfile);
         _metaData.SetEntityName(user, disguiseProfile.Name, raiseEvents: raiseRenameEvents);
         _identity.QueueIdentityUpdate(user);
 
@@ -206,7 +206,7 @@ public sealed partial class AbductorVestDisguiseSystem : EntitySystem
 
         profile = profile.WithKnowledge(user.Comp2.Knowledge);
         _visualBody.ApplyProfileTo(user.Owner, profile);
-        _humanoidProfile.ApplyProfileTo(user.Owner, profile);
+        _humanoid.ApplyProfileTo(user.Owner, profile);
         _metaData.SetEntityName(user, name, raiseEvents: raiseRenameEvents);
         _identity.QueueIdentityUpdate(user);
 
