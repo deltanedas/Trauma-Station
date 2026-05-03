@@ -53,6 +53,15 @@ public sealed partial class MutationSystem : CommonMutationSystem
     public HashSet<EntProtoId<MutationComponent>> UnlockedMutations = new();
 
     /// <summary>
+    /// All mutations which have a <c>beastPoints</c> set, and their points.
+    /// </summary>
+    public Dictionary<EntProtoId<MutationComponent>, int> BeastMutations = new();
+    /// <summary>
+    /// All <see cref="BeastMutations"/> organised by their points.
+    /// </summary>
+    public Dictionary<int, List<EntProtoId<MutationComponent>>> BeastMutationsByPoints = new();
+
+    /// <summary>
     /// Per-round data for each mutation, e.g. its bases.
     /// Server only as clients knowing every mutation would be silly.
     /// </summary>
@@ -191,6 +200,8 @@ public sealed partial class MutationSystem : CommonMutationSystem
         MutationCount = 0;
         AllMutations.Clear();
         UnlockedMutations.Clear();
+        BeastMutations.Clear();
+        BeastMutationsByPoints.Clear();
         foreach (var proto in _proto.EnumeratePrototypes<EntityPrototype>())
         {
             if (!proto.TryGetComponent<MutationComponent>(out var comp, Factory))
@@ -200,6 +211,15 @@ public sealed partial class MutationSystem : CommonMutationSystem
             AllMutations[proto.ID] = comp;
             if (!comp.Locked && !HasRecipe(proto.ID))
                 UnlockedMutations.Add(proto.ID);
+
+            if (!proto.TryGetComponent<BeastMutationComponent>(out var beast, Factory))
+                continue;
+
+            // do note that BeastMutations are not mutually exclusive with UnlockedMutations
+            BeastMutations[proto.ID] = beast.Points;
+            if (!BeastMutationsByCost.TryGetValue(beast.Points, out var list))
+                BeastMutationsByCost[beast.Points] = list = new();
+            list.Add(proto.ID);
         }
     }
 
