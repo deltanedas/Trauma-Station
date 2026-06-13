@@ -1,0 +1,191 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: markingsGroup
+  parent: Undergarments
+  id: Beastment
+  limits:
+    enum.HumanoidVisualLayers.Eyes:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.FacialHair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.LArm:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.LHand:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.RHand:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.LFoot:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.RFoot:
+      limit: 2
+      required: false
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceBeastmen
+  name: beastmen appearance
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InitialBody
+    organs:
+      # Parts
+      Torso: OrganBeastmenTorso
+      Head: OrganBeastmenHead
+      ArmLeft: OrganBeastmenArmLeft
+      ArmRight: OrganBeastmenArmRight
+      HandRight: OrganBeastmenHandRight
+      HandLeft: OrganBeastmenHandLeft
+      LegLeft: OrganBeastmenLegLeft
+      LegRight: OrganBeastmenLegRight
+      FootLeft: OrganBeastmenFootLeft
+      FootRight: OrganBeastmenFootRight
+      # Organs
+      Brain: OrganBeastmenBrain
+      Eyes: OrganBeastmenEyes
+      Tongue: OrganBeastmenTongue
+      Ears: OrganBeastmenEars
+      Lungs: OrganBeastmenLungs
+      Heart: OrganBeastmenHeart
+      Stomach: OrganBeastmenStomach
+      Liver: OrganBeastmenLiver
+      Kidneys: OrganBeastmenKidneys
+
+- type: entity
+  parent:
+  - AppearanceBeastmen
+  - BaseSpeciesMobOrganic
+  id: MobBeastmen
+  name: Urist McBeast
+
+# Base
+
+- type: entity
+  abstract: true
+  parent: OrganBaseFleshy
+  id: OrganBeastmen
+  suffix: Beastmen
+
+- type: entity
+  abstract: true
+  parent: [ OrganBeastmen, OrganSpriteHumanInternal ]
+  id: OrganBeastmenInternal
+
+- type: entity
+  abstract: true
+  id: OrganBeastmenVisual
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: Mobs/Species/Vulpkanin/parts.rsi # gets replaced by your chosen phenotype parts
+
+- type: entity
+  abstract: true
+  parent: [ OrganBeastmen, OrganBeastmenVisual ]
+  id: OrganBeastmenExternal
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Vulpkanin/parts.rsi # gets replaced when VisualOrgan state changes
+  - type: VisualOrganMarkings
+    markingData:
+      group: Slime
+
+# Parts
+
+- type: entity
+  parent: [ OrganBaseTorsoWinged, OrganBeastmenExternal ] # Trauma - Winged torso (appendages count as wings for simplicity)
+  id: OrganBeastmenTorso
+
+- type: entity
+  parent: [ OrganBaseHeadBald, OrganBeastmenExternal ] # Trauma - bald
+  id: OrganBeastmenHead
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganBeastmenExternal ]
+  id: OrganBeastmenArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganBeastmenExternal ]
+  id: OrganBeastmenArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganBeastmenExternal ]
+  id: OrganBeastmenHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganBeastmenExternal ]
+  id: OrganBeastmenHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganBeastmenExternal ]
+  id: OrganBeastmenLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganBeastmenExternal ]
+  id: OrganBeastmenLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganBeastmenExternal ]
+  id: OrganBeastmenFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganBeastmenExternal ]
+  id: OrganBeastmenFootRight
+
+# Organs
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganBeastmenInternal ]
+  id: OrganBeastmenBrain
+
+- type: entity
+  parent: [ OrganBeastmenVisual, OrganBaseEyes, OrganBeastmenInternal ]
+  id: OrganBeastmenEyes
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganBeastmenInternal ]
+  id: OrganBeastmenTongue
+
+- type: entity
+  parent: [ OrganBaseEars, OrganBeastmenInternal ]
+  id: OrganBeastmenEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganBeastmenInternal ]
+  id: OrganBeastmenLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganBeastmenInternal ]
+  id: OrganBeastmenHeart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganBeastmenInternal ]
+  id: OrganBeastmenStomach
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganBeastmenInternal ]
+  id: OrganBeastmenLiver
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganBeastmenInternal ]
+  id: OrganBeastmenKidneys

@@ -27,6 +27,7 @@ public sealed partial class HumanoidCharacterProfile
 
     /// <summary>
     /// The beastmen-specific profile data.
+    /// Only used for species prototypes with <c>beast: true</c>.
     /// </summary>
     [DataField]
     public BeastProfile? Beast;
@@ -60,13 +61,14 @@ public sealed partial class HumanoidCharacterProfile
 
         var entMan = collection.Resolve<IEntityManager>();
         var knowledge = entMan.System<CommonKnowledgeSystem>();
-        var parent = proto.Index(Species).Knowledge;
+        var species = proto.Index(Species);
+        var parent = species.Knowledge;
         knowledge.EnsureProfileValid(parent, ref Knowledge);
 
-        if (proto.Index(Species).Beast)
+        if (species.Beast)
         {
             Beast ??= new();
-            Beast.EnsureValid(proto);
+            entMan.System<CommonBeastSystem>().EnsureProfileValid(Beast);
         }
         else
         {

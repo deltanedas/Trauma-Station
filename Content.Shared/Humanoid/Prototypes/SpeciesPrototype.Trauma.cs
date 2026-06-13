@@ -12,4 +12,10 @@ public sealed partial class SpeciesPrototype
 {
     [DataField]
     public ProtoId<KnowledgeProfilePrototype> Knowledge = "Human";
+
+    /// <summary>
+    /// Whether to allow beast profiles in the character data.
+    /// </summary>
+    [DataField]
+    public bool Beast;
 }

@@ -9,33 +9,16 @@ namespace Content.Trauma.Shared.Humanoid;
 
 public sealed partial class BeastSystem : CommonBeastSystem
 {
-    [Dependency] private BodySystem _body = default!;
     [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private MutationSystem _mutation = default!;
-
-    public const string MaxMutations = 16;
 
     /// <summary>
     /// Cache of every phenotype prototype's id.
     /// </summary>
     public List<ProtoId<BeastPhenotypePrototype>> AllPhenotypes = new();
 
-    /// <summary>
-    /// Human organs that always get added
-    /// </summary>
-    public static readonly EntProtoId[] InternalOrgans =
-    [
-        "OrganHumanBrain",
-        "OrganHumanEyes",
-        "OrganHumanTongue",
-        "OrganHumanHeart",
-        "OrganHumanLungs",
-        "OrganHumanStomach",
-        "OrganHumanLiver",
-        "OrganHumanKidneys",
-        "OrganHumanAppendix"
-    ];
+    private List<EntProtoId<MutationComponent>> _picking = new();
 
     public override void Initialize()
     {
@@ -52,10 +35,6 @@ public sealed partial class BeastSystem : CommonBeastSystem
         profile.Mutations.RemoveAll(id => !_mutation.BeastMutations.ContainsKey(id));
 
         // remove anything above the limits
-        while (profile.Mutations.Count > MaxMutations)
-        {
-            profile.Mutations.RemoveAt(profile.Mutations.Count - 1);
-        }
         foreach (var (organ, index) in profile.OrganIndices)
         {
             if (index >= profile.Phenotypes.Count)
@@ -67,7 +46,7 @@ public sealed partial class BeastSystem : CommonBeastSystem
         {
             profile.Phenotypes.Add(_random.Pick(AllPhenotypes));
         }
-        for (organ in _body.BodyParts)
+        foreach (var organ in BodySystem.BodyParts)
         {
             if (!profile.OrganIndices.ContainsKey(organ))
                 profile.OrganIndices[organ] = 0;
@@ -94,8 +73,10 @@ public sealed partial class BeastSystem : CommonBeastSystem
                 if (_picking.Count == 0)
                     continue;
 
+                deficit -= target;
+
                 var picked = _random.Pick(_picking);
-                profile.Mutations.Add(_mutation.BeastMutations[picked]);
+                profile.Mutations.Add(picked);
                 break;
             }
         }
@@ -121,7 +102,7 @@ public sealed partial class BeastSystem : CommonBeastSystem
         var points = 0;
         foreach (var id in profile.Phenotypes)
         {
-            points -= _proto.Resolve(id, out var proto) ? proto.Cost : 0;
+            points -= _proto.Resolve<BeastPhenotypePrototype>(id, out var proto) ? proto.Cost : 0;
         }
 
         foreach (var id in profile.Mutations)

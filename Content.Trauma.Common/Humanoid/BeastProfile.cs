@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Body;
 
 namespace Content.Trauma.Common.Humanoid;
@@ -7,8 +9,8 @@ namespace Content.Trauma.Common.Humanoid;
 /// Fields using just string are not guaranteed to be valid and must be checked.
 /// Organ categories are not expected to ever be removed.
 /// </summary>
-[DataRecord]
-public sealed class BeastProfile
+[DataRecord, Serializable, NetSerializable]
+public sealed partial class BeastProfile
 {
     /// <summary>
     /// Every phenotype organs can be picked from.

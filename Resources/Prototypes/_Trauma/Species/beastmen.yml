@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: species
+  id: Beastmen
+  name: species-name-beastmen
+  roundStart: true
+  prototype: MobBeastmen
+  dollPrototype: AppearanceBeastmen
+  skinColoration: Hues
+  beast: true
