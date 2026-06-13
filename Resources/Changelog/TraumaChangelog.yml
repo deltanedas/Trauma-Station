@@ -9957,3 +9957,180 @@ Entries:
   id: 1127
   time: '2026-06-08T15:32:42.0000000+00:00'
   url: https://github.com/Trauma-Station/Trauma-Station/pull/3106
+- author: Smilez1010
+  changes:
+  - type: Add
+    message: Added Skill chip boxes to cargo catalog
+  - type: Add
+    message: Added Service skill chip box to hop locker
+  - type: Add
+    message: Added Service Skill chips to Ptech
+  - type: Add
+    message: Added Nukie Skill Chip to Emagged Ptech
+  - type: Tweak
+    message: Ptech restock costs 2.5k now
+  id: 1128
+  time: '2026-06-08T17:07:31.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3102
+- author: deltanedas
+  changes:
+  - type: Fix
+    message: Fixed devil contracts mispredicting for the devil.
+  id: 1129
+  time: '2026-06-08T18:51:53.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3110
+- author: GoidaYAMLWarrior
+  changes:
+  - type: Tweak
+    message: >-
+      Buffed skill profiles for a few species, dwarves are actually good at
+      forging.
+  id: 1130
+  time: '2026-06-08T23:21:59.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3116
+- author: SoulOfExistenz
+  changes:
+  - type: Add
+    message: Added Russian accent to insurgents
+  id: 1131
+  time: '2026-06-09T11:06:09.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3120
+- author: TurboTrackerss14
+  changes:
+  - type: Fix
+    message: IPC and Plasmamen now use their species knowledge.
+  id: 1132
+  time: '2026-06-09T13:43:16.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3124
+- author: Wizard25671
+  changes:
+  - type: Remove
+    message: Removed the additional traitor spawns on the vampire gamemode
+  - type: Tweak
+    message: Increased the max amount of vampires that appear from the vampire gamemode
+  id: 1133
+  time: '2026-06-09T22:50:10.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3121
+- author: Sulfari, Arraydeess, LilithArson, PureBreadBagel
+  changes:
+  - type: Tweak
+    message: The bar dispensers can now make infinite drinks.
+  - type: Add
+    message: Food Synthesizers have been added.
+  - type: Add
+    message: Science can now research energy chem dispensers and Food synthesizers.
+  - type: Tweak
+    message: All energy chem machines require BlueSpace Crystals to be built now.
+  id: 1134
+  time: '2026-06-09T23:56:23.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3113
+- author: deltanedas
+  changes:
+  - type: Tweak
+    message: >-
+      Changed knowledge mastery levels to be 25/50/75 instead of 26/51/76, so
+      chaplain now has advanced magical literacy.
+  id: 1135
+  time: '2026-06-10T00:09:36.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3130
+- author: deltanedas
+  changes:
+  - type: Fix
+    message: Fixed trevor letting you noclip and go invisible.
+  id: 1136
+  time: '2026-06-10T01:27:45.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3128
+- author: deltanedas
+  changes:
+  - type: Fix
+    message: >-
+      Fixed interactors trying to use/attack ghosts, blood splatters and other
+      nonphysical things.
+  id: 1137
+  time: '2026-06-10T01:34:48.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3132
+- author: Aineias1
+  changes:
+  - type: Tweak
+    message: Many minor map changes
+  id: 1138
+  time: '2026-06-10T08:51:17.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3127
+- author: GoidaYAMLWarrior
+  changes:
+  - type: Add
+    message: Added balaclavas as common maints locker loot
+  id: 1139
+  time: '2026-06-10T15:43:38.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/2703
+- author: Sulfari
+  changes:
+  - type: Tweak
+    message: Vent mobs no longer have a raffle timer.
+  - type: Tweak
+    message: Snakes from vent horde event should be playable now.
+  id: 1140
+  time: '2026-06-10T16:34:31.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3134
+- author: deltanedas
+  changes:
+  - type: Remove
+    message: >-
+      Removed being able to learn languages by hearing bots and stuff. Go use
+      the translator implants.
+  id: 1141
+  time: '2026-06-12T20:36:16.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3147
+- author: deltanedas
+  changes:
+  - type: Tweak
+    message: >-
+      Reworked skillchips, they can be removed by right clicking instead of
+      needing surgery. They are installed directly into the brain which you can
+      work with as well as the mob itself.
+  - type: Tweak
+    message: Slimepeople's slime core surgery now uses brain instead of stomach.
+  id: 1142
+  time: '2026-06-12T22:56:40.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3146
+- author: Sulfari, Carolyn3114
+  changes:
+  - type: Add
+    message: Added a new insurgent ship variant.
+  id: 1143
+  time: '2026-06-12T22:57:51.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3144
+- author: GoidaYAMLWarrior
+  changes:
+  - type: Tweak
+    message: Buffed billy club's attack rate so it swings faster.
+  - type: Tweak
+    message: Added 3 billy clubs to the armory melee locker.
+  id: 1144
+  time: '2026-06-13T05:04:58.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3153
+- author: deltanedas
+  changes:
+  - type: Fix
+    message: Fixed all IPC organs/parts just being called "organ".
+  id: 1145
+  time: '2026-06-13T05:44:37.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3157
+- author: Aviu
+  changes:
+  - type: Add
+    message: Mouse wheel to zoom.
+  - type: Add
+    message: Shift + mouse wheel to change targeting.
+  - type: Add
+    message: Ctrl + mouse wheel to rotate camera.
+  id: 1146
+  time: '2026-06-13T15:15:05.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3126
+- author: TechnicFighter, Graves
+  changes:
+  - type: Add
+    message: Added the Monarch Coat to the uplink.
+  id: 1147
+  time: '2026-06-13T15:17:08.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/3150
