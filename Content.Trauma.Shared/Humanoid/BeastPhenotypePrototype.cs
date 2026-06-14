@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Body;
 
 namespace Content.Trauma.Shared.Humanoid;
@@ -25,4 +27,10 @@ public sealed partial class BeastPhenotypePrototype : IPrototype
     /// </summary>
     [DataField]
     public int Cost;
+
+    /// <summary>
+    /// Premium species :)
+    /// </summary>
+    [DataField]
+    public bool PatronOnly;
 }
