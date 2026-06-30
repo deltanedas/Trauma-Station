@@ -32,6 +32,7 @@ public sealed partial class HumanoidProfileSystem : EntitySystem
         // <Trauma>
         SetBarkVoice((ent, ent.Comp), profile.BarkVoice);
         SetKnowledgeProfile((ent, ent.Comp), profile.Knowledge);
+        SetBeastProfile((ent, ent.Comp), profile.Beast);
         // </Trauma>
 
         var voiceChanged = new VoiceChangedEvent(ent.Comp.Voice, profile.Voice);

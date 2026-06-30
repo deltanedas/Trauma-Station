@@ -1,5 +1,6 @@
 // <Trauma>
 using Content.Goobstation.Common.Barks;
+using Content.Trauma.Common.Humanoid;
 using Content.Trauma.Common.Knowledge;
 // </Trauma>
 using System.IO;
@@ -150,7 +151,8 @@ namespace Content.Shared.Preferences
             Dictionary<string, RoleLoadout> loadouts,
             // <Trauma>
             ProtoId<BarkPrototype> barkVoice,
-            KnowledgeProfile knowledge)
+            KnowledgeProfile knowledge,
+            BeastProfile? beast = null)
             // </Trauma>
         {
             Name = name;
@@ -170,6 +172,7 @@ namespace Content.Shared.Preferences
             // <Trauma>
             BarkVoice = barkVoice;
             Knowledge = knowledge;
+            Beast = beast;
             // </Trauma>
 
             var hasHighPrority = false;

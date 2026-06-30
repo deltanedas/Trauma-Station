@@ -22,6 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- <Trauma> -->
+    <ProjectReference Include="../Content.Trauma.Common/Content.Trauma.Common.csproj" />
+    <!-- </Trauma> -->
     <ProjectReference Include="..\Content.Shared.Database\Content.Shared.Database.csproj" />
   </ItemGroup>
 

@@ -2,7 +2,7 @@
 
 - type: markingsGroup
   parent: Undergarments
-  id: Beastment
+  id: Beastmen
   limits:
     enum.HumanoidVisualLayers.Eyes:
       limit: 1
@@ -47,6 +47,9 @@
   name: beastmen appearance
   categories: [ HideSpawnMenu ]
   components:
+  - type: BeastVisuals
+  - type: HumanoidProfile
+    species: Beastmen
   - type: InitialBody
     organs:
       # Parts
@@ -98,6 +101,9 @@
   - type: VisualOrgan
     data:
       sprite: Mobs/Species/Vulpkanin/parts.rsi # gets replaced by your chosen phenotype parts
+  - type: VisualOrganMarkings
+    markingData:
+      group: Beastmen
 
 - type: entity
   abstract: true
@@ -106,18 +112,15 @@
   components:
   - type: Sprite
     sprite: Mobs/Species/Vulpkanin/parts.rsi # gets replaced when VisualOrgan state changes
-  - type: VisualOrganMarkings
-    markingData:
-      group: Slime
 
 # Parts
 
 - type: entity
-  parent: [ OrganBaseTorsoWinged, OrganBeastmenExternal ] # Trauma - Winged torso (appendages count as wings for simplicity)
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganBeastmenExternal ]
   id: OrganBeastmenTorso
 
 - type: entity
-  parent: [ OrganBaseHeadBald, OrganBeastmenExternal ] # Trauma - bald
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganBeastmenExternal ]
   id: OrganBeastmenHead
 
 - type: entity

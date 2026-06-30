@@ -12,6 +12,8 @@
     conflicts:
     - MutationThermalAdaptation
     - MutationPressureAdaptation
+  - type: BeastMutation
+    points: -5 # powergaming my beloved
 
 - type: entity
   parent: BaseMutationAdaptation

@@ -4,6 +4,7 @@ using Content.Goobstation.Common.Barks;
 using Content.Shared.Body;
 using Content.Shared.DetailExaminable;
 using Content.Shared.Preferences;
+using Content.Trauma.Common.Humanoid;
 using Content.Trauma.Common.Knowledge;
 using Content.Trauma.Common.Knowledge.Systems;
 using Robust.Shared.Enums;
@@ -18,6 +19,7 @@ namespace Content.Shared.Humanoid;
 public sealed partial class HumanoidProfileSystem
 {
     [Dependency] private BodySystem _body = default!;
+    [Dependency] private CommonBeastSystem _beast = default!;
     [Dependency] private CommonKnowledgeSystem _knowledge = default!;
     [Dependency] private SharedVisualBodySystem _visualBody = default!;
 
@@ -72,6 +74,21 @@ public sealed partial class HumanoidProfileSystem
         _knowledge.ApplyProfile(ent, parent, profile);
     }
 
+    public void SetBeastProfile(Entity<HumanoidProfileComponent> ent, BeastProfile? beast)
+    {
+        // sanity check, never allow beast profiles for wrong species
+        if (!_prototype.Index(ent.Comp.Species).Beast)
+            beast = null;
+
+        // handle updates that change costs etc
+        if (beast != null)
+            _beast.EnsureProfileValid(beast);
+
+        ent.Comp.BeastProfile = beast;
+        var ev = new BeastProfileChangedEvent(beast);
+        RaiseLocalEvent(ent, ref ev);
+    }
+
     // god i love shitcode having 0 apis so i must write even more shitcode
     public HumanoidCharacterProfile? CreateProfile(Entity<HumanoidProfileComponent?> ent)
     {
@@ -101,7 +118,8 @@ public sealed partial class HumanoidProfileSystem
             new(),
             new(),
             ent.Comp.BarkVoice,
-            new(ent.Comp.Knowledge));
+            new(ent.Comp.Knowledge),
+            ent.Comp.BeastProfile is { } beast ? new(beast) : null);
     }
 
     /// <summary>

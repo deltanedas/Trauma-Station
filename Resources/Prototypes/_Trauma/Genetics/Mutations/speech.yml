@@ -46,6 +46,8 @@
   - type: StatusEffectsMutation
     statusEffects:
     - StatusEffectMutedMutation
+  - type: BeastMutation
+    points: 2
 
 - type: entity
   parent: BaseMutation

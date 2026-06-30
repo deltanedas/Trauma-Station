@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Body;
+using System.Text.Json.Serialization;
 
 namespace Content.Trauma.Common.Humanoid;
 
@@ -16,15 +17,32 @@ public sealed partial class BeastProfile
     /// Every phenotype organs can be picked from.
     /// If this has no valid phenotypes, one must be randomly picked when loading.
     /// </summary>
-    public List<string> Phenotypes = new();
+    [JsonPropertyName("phenotypes")]
+    public List<string> Phenotypes;
 
     /// <summary>
     /// Every organ slot and the phenotype index to take the organ from.
     /// </summary>
-    public Dictionary<ProtoId<OrganCategoryPrototype>, int> OrganIndices = new();
+    [JsonPropertyName("organIndices")]
+    public Dictionary<ProtoId<OrganCategoryPrototype>, int> OrganIndices;
 
     /// <summary>
     /// All mutations to add when spawning.
     /// </summary>
-    public List<string> Mutations = new();
+    [JsonPropertyName("mutations")]
+    public List<string> Mutations;
+
+    public BeastProfile()
+    {
+        Phenotypes = new();
+        OrganIndices = new();
+        Mutations = new();
+    }
+
+    public BeastProfile(BeastProfile other)
+    {
+        Phenotypes = new(other.Phenotypes);
+        OrganIndices = new(other.OrganIndices);
+        Mutations = new(other.Mutations);
+    }
 }

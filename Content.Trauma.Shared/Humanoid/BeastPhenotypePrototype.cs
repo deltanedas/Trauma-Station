@@ -15,10 +15,22 @@ public sealed partial class BeastPhenotypePrototype : IPrototype
     public string ID { get; private set; } = default!;
 
     /// <summary>
-    /// The bodyparts to spawn for each organ.
+    /// The RSI to use for bodyparts.
     /// </summary>
     [DataField(required: true)]
-    public Dictionary<ProtoId<OrganCategoryPrototype>, EntProtoId> Organs = default!;
+    public string PartsRsi = string.Empty;
+
+    /// <summary>
+    /// The RSI to use for internal organs.
+    /// </summary>
+    [DataField]
+    public string OrgansRsi = "Mobs/Species/Human/organs.rsi";
+
+    /// <summary>
+    /// Optional displacement maps RSI
+    /// </summary>
+    [DataField]
+    public string? DisplacementsRsi;
 
     /// <summary>
     /// How many points having this phenotype active costs.

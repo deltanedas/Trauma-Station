@@ -283,6 +283,7 @@ namespace Content.Server.Database
             {
                 profile.KnowledgeMastery[id] = mastery;
             }
+            profile.BeastProfile = humanoid.Beast;
             // </Trauma>
 
             profile.Loadouts.Clear();

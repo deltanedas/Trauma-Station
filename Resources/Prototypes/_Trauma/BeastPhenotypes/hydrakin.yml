@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: beastPhenotype
+  id: Hydrakin
+  partsRsi: _Trauma/Mobs/Species/Hydrakin/parts.rsi
+  displacementsRsi: _Trauma/Mobs/Species/Hydrakin/displacement.rsi
+  cost: 4
+  patronOnly: true

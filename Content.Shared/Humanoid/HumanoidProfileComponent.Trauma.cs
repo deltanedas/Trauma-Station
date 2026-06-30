@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.Barks;
+using Content.Trauma.Common.Humanoid;
 using Content.Trauma.Common.Knowledge;
 using Robust.Shared.Prototypes;
 
@@ -16,4 +17,7 @@ public sealed partial class HumanoidProfileComponent
 
     [DataField]
     public KnowledgeProfile Knowledge = new();
+
+    [DataField]
+    public BeastProfile? BeastProfile;
 }

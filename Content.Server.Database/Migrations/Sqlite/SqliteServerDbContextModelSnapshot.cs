@@ -1188,6 +1188,10 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("bark_voice");
 
+                    b.Property<string>("BeastProfile")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("beast_profile");
+
                     b.Property<string>("CharacterName")
                         .IsRequired()
                         .HasColumnType("TEXT")

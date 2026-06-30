@@ -1,4 +1,5 @@
 // <Trauma>
+using Content.Trauma.Common.Humanoid;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 // </Trauma>
 using System;
@@ -90,6 +91,13 @@ namespace Content.Server.Database
                     dict => dict.GetHashCode(),
                     dict => new Dictionary<string, int>(dict)
                 ));
+            profile.Property(p => p.BeastProfile)
+                .HasConversion(
+                    v => JsonSerializer.Serialize(v),
+                    s => string.IsNullOrEmpty(s)
+                        ? new()
+                        : JsonSerializer.Deserialize<BeastProfile>(s)
+                );
             profile.HasIndex(p => new { p.Slot, PrefsId = p.PreferenceId })
                 .IsUnique();
             // </Trauma>
@@ -461,6 +469,7 @@ namespace Content.Server.Database
         // <Trauma>
         public string BarkVoice { get; set; } = null!;
         public Dictionary<string, int> KnowledgeMastery { get; set; } = new();
+        public BeastProfile? BeastProfile { get; set; }
         // </Trauma>
         [Column(TypeName = "jsonb")] public JsonDocument? OrganMarkings { get; set; } = null!;
         [Column(TypeName = "jsonb")] public JsonDocument? Markings { get; set; } = null!;

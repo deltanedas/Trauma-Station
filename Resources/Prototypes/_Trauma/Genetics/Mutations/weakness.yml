@@ -13,6 +13,8 @@
     rarity: Rare
     conflicts:
     - MutationThermalWeakness
+  - type: BeastMutation
+    points: 2
 
 - type: entity
   parent: BaseMutationWeakness
@@ -73,3 +75,5 @@
       coefficients:
         Cold: 1.8
         Heat: 1.3
+  - type: BeastMutation
+    points: 3

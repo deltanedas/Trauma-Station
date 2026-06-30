@@ -1,4 +1,5 @@
 // <Trauma>
+using Content.Trauma.Common.Humanoid;
 using Content.Trauma.Common.Knowledge;
 // </Trauma>
 using System.Diagnostics.CodeAnalysis;
@@ -201,7 +202,8 @@ namespace Content.Server.Preferences.Managers
                 loadouts,
                 // <Trauma>
                 profile.BarkVoice ?? HumanoidProfileSystem.DefaultBarkVoice,
-                KnowledgeProfile.Verify(profile.KnowledgeMastery, _prototypeManager)
+                KnowledgeProfile.Verify(profile.KnowledgeMastery, _prototypeManager),
+                profile.BeastProfile
                 // </Trauma>
             );
         }
