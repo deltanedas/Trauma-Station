@@ -27,22 +27,22 @@ public sealed partial class BeastProfile
     public Dictionary<ProtoId<OrganCategoryPrototype>, int> OrganIndices;
 
     /// <summary>
-    /// All mutations to add when spawning.
+    /// All beast traits to add when spawning.
     /// </summary>
-    [JsonPropertyName("mutations")]
-    public List<string> Mutations;
+    [JsonPropertyName("traits")]
+    public List<string> Traits;
 
     public BeastProfile()
     {
         Phenotypes = new();
         OrganIndices = new();
-        Mutations = new();
+        Traits = new();
     }
 
     public BeastProfile(BeastProfile other)
     {
         Phenotypes = new(other.Phenotypes);
         OrganIndices = new(other.OrganIndices);
-        Mutations = new(other.Mutations);
+        Traits = new(other.Traits);
     }
 }
