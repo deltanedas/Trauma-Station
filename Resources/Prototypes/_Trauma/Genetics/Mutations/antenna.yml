@@ -12,8 +12,6 @@
     channels:
     - Common
   # TODO: add sprite layer with antenna
-  - type: BeastMutation
-    points: -2
 
 - type: entity
   parent: BaseMutation
@@ -29,8 +27,6 @@
     # keep your paranoia :)
   - type: ActionMutation
     action: ActionMutationMindRead
-  - type: BeastMutation
-    points: -5
 
 - type: entity
   parent: BaseMutationAction

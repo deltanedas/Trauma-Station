@@ -14,8 +14,6 @@
     - MutationGeladikinesis
   - type: ActionMutation
     action: ActionMutationCindikinesis
-  - type: BeastMutation
-    points: -2
 
 - type: entity
   parent: BaseMutation
@@ -32,8 +30,6 @@
     - MutationCryokinesis
   - type: ActionMutation
     action: ActionMutationPyrokinesis
-  - type: BeastMutation
-    points: -6
 
 - type: entity
   parent: BaseConjureAction

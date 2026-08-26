@@ -13,8 +13,6 @@
     rarity: Rare
     conflicts:
     - MutationThermalWeakness
-  - type: BeastMutation
-    points: 2
 
 - type: entity
   parent: BaseMutationWeakness
@@ -22,6 +20,9 @@
   name: Cold Weakness
   description: A strange mutation that cripples the host's ability to raise its body temperature. Cold is far more dangerous.
   components:
+  - type: RemovesMutation
+    removes:
+    - MutationColdAdaptation
   - type: ThermalRegulatorMutation
     shivering: 0.05
     metabolism: 0.3 # lower metabolism idk
@@ -38,6 +39,9 @@
   name: Heat Weakness
   description: A strange mutation that cripples the host's ability to lower its body temperature. Heat is far more dangerous.
   components:
+  - type: RemovesMutation
+    removes:
+    - MutationHeatAdaptation
   - type: ThermalRegulatorMutation
     sweating: 0.05
     metabolism: 1.5 # more heat too
@@ -56,7 +60,8 @@
   components:
   - type: Mutation
     instability: -40 # bonus 10 stability when combined for being a smart lad...
-    conflicts: []
+    conflicts:
+    - MutationThermalAdaptation
   - type: RemovesMutation
     removes:
     - MutationColdWeakness
@@ -75,5 +80,3 @@
       coefficients:
         Cold: 1.8
         Heat: 1.3
-  - type: BeastMutation
-    points: 3

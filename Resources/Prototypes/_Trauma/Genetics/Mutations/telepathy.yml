@@ -12,8 +12,6 @@
     rarity: Rare
   - type: ActionMutation
     action: ActionMutationTelepathy
-  - type: BeastMutation
-    points: -4
 
 - type: entity
   parent: [ BaseMutationAction, BaseMentalAction ]

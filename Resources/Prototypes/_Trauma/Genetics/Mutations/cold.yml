@@ -11,8 +11,6 @@
     difficulty: 10
   - type: ActionMutation
     action: ActionMutationGeladikinesis
-  - type: BeastMutation
-    points: -2
 
 - type: entity
   parent: BaseMutation
@@ -26,8 +24,6 @@
     rarity: Rare
   - type: ActionMutation
     action: ActionMutationCryokinesis
-  - type: BeastMutation
-    points: -6
 
 - type: entity
   parent: BaseConjureAction

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Body;
+using System.Text;
 
 namespace Content.Trauma.Shared.Humanoid;
 
@@ -13,6 +14,12 @@ public sealed partial class BeastPhenotypePrototype : IPrototype
 {
     [IdDataField]
     public string ID { get; private set; } = default!;
+
+    /// <summary>
+    /// The human-readable name of this phenotype.
+    /// </summary>
+    [DataField(required: true)]
+    public string Name = string.Empty;
 
     /// <summary>
     /// The RSI to use for bodyparts.
@@ -45,4 +52,17 @@ public sealed partial class BeastPhenotypePrototype : IPrototype
     /// </summary>
     [DataField]
     public bool PatronOnly;
+
+    /// <summary>
+    /// Indefinite article for this phenotype: a vulp, an avali, etc.
+    /// </summary>
+    [DataField]
+    public string IndefiniteArticle = "a";
+
+    public void AddIndefinite(StringBuilder sb)
+    {
+        sb.Append(IndefiniteArticle);
+        sb.Append(' ');
+        sb.Append(Name);
+    }
 }

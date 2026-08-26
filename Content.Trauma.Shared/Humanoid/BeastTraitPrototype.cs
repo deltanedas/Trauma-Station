@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Trauma.Shared.Genetics.Mutations;
 
 namespace Content.Trauma.Shared.Humanoid;
@@ -8,14 +10,29 @@ namespace Content.Trauma.Shared.Humanoid;
 [Prototype]
 public sealed partial class BeastTraitPrototype : IPrototype
 {
+    [IdDataField]
+    public string ID { get; private set; } = default!;
+
     /// <summary>
-    /// Human readable name for this mutation.
+    /// The category this trait belongs to in the UI.
+    /// </summary>
+    [DataField(required: true)]
+    public ProtoId<BeastTraitCategoryPrototype> Category;
+
+    /// <summary>
+    /// Human readable name for this trait.
     /// </summary>
     [DataField(required: true)]
     public string Name;
 
     /// <summary>
-    /// How many points this mutation gives you for your character.
+    /// Human readable description for this trait, shown when hovered.
+    /// </summary>
+    [DataField(required: true)]
+    public string Desc;
+
+    /// <summary>
+    /// How many points this trait gives you for your character.
     /// Negative points are for actually good things.
     /// </summary>
     [DataField(required: true)]
@@ -32,6 +49,12 @@ public sealed partial class BeastTraitPrototype : IPrototype
     /// </summary>
     [DataField]
     public List<ProtoId<BeastPhenotypePrototype>>? Blacklist;
+
+    /// <summary>
+    /// Prevents other traits being taken if this one is taken.
+    /// </summary>
+    [DataField]
+    public List<ProtoId<BeastTraitPrototype>> Conflicts = new();
 
     /// <summary>
     /// Add an unremovable mutation to the mob when picked.

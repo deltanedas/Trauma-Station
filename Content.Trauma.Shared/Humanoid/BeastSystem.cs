@@ -6,6 +6,8 @@ using Content.Shared.Interaction.Components;
 using Content.Trauma.Common.Humanoid;
 using Content.Trauma.Shared.Genetics.Mutations;
 using Robust.Shared.Random;
+using System.Linq;
+using System.Text;
 
 namespace Content.Trauma.Shared.Humanoid;
 
@@ -94,7 +96,7 @@ public sealed partial class BeastSystem : CommonBeastSystem
     }
 
     [SubscribeLocalEvent]
-    private void OnProfileChanged(Entity<HumanoidAppearanceComponent> ent, ref BeastProfileChangedEvent args)
+    private void OnProfileChanged(Entity<HumanoidProfileComponent> ent, ref BeastProfileChangedEvent args)
     {
         if (args.Profile is not { } beast)
             return;
@@ -118,8 +120,7 @@ public sealed partial class BeastSystem : CommonBeastSystem
             }
 
             // no removing all your downsides 2m in
-            var mutation = mutatable.Mutations[id];
-            EnsureComp<UnremoveableComponent>(mutation);
+            EnsureComp<UnremoveableComponent>(mutatable.Mutations[id]);
         }
     }
 
@@ -150,7 +151,7 @@ public sealed partial class BeastSystem : CommonBeastSystem
 
         foreach (var trait in ProtoMan.EnumeratePrototypes<BeastTraitPrototype>())
         {
-            var list = GetOrNew(TraitsByPoints, trait.Points);
+            var list = TraitsByPoints.GetOrNew(trait.Points);
             list.Add(trait);
         }
     }
@@ -161,13 +162,13 @@ public sealed partial class BeastSystem : CommonBeastSystem
         foreach (var id in profile.Phenotypes)
         {
             if (ProtoMan.Resolve<BeastPhenotypePrototype>(id, out var proto))
-                points -= proto.Cost:
+                points -= proto.Cost;
         }
 
         foreach (var id in profile.Traits)
         {
             if (ProtoMan.Resolve<BeastTraitPrototype>(id, out var trait))
-                points += trait.Points:
+                points += trait.Points;
         }
         return points;
     }
@@ -176,14 +177,68 @@ public sealed partial class BeastSystem : CommonBeastSystem
     /// Returns true if a trait can be added to a <see cref="BeastProfile"/>.
     /// </summary>
     public bool CanAddTrait(BeastProfile profile, BeastTraitPrototype trait)
-    {
-        if (trait.Whitelist is { } whitelist && !whitelist.Any(id => profile.Phenotypes.Contains(id)))
-            return false;
-        if (trait.Blacklist is { } blacklist && blacklist.Any(id => profile.Phenotypes.Contains(id)))
-            return false;
+        => CanAddTrait(profile, trait, out _);
 
-        // TODO: check removes/conflicts
+    /// <summary>
+    /// Returns true if a trait can be added to a <see cref="BeastProfile"/>, giving a reason if it can't.
+    /// </summary>
+    public bool CanAddTrait(BeastProfile profile, BeastTraitPrototype trait, out string? reason)
+    {
+        reason = null;
+        if (trait.Whitelist is { } whitelist && !whitelist.Any(id => profile.Phenotypes.Contains(id)))
+        {
+            reason = $"You must be {FormatPhenotypes(whitelist)}";
+            return false;
+        }
+
+        if (trait.Blacklist is { } blacklist && blacklist.Any(id => profile.Phenotypes.Contains(id)))
+        {
+            reason = $"You cannot be {FormatPhenotypes(blacklist)}";
+            return false;
+        }
+
+        // no conflicting traits present
+        foreach (var conflict in trait.Conflicts)
+        {
+            if (profile.Traits.Contains(conflict))
+                return false;
+        }
+
         // no duplicates...
         return !profile.Traits.Contains(trait.ID);
+    }
+
+    // nicest sounding list of names for the context of a whitelist
+    // 1: an apple
+    // 2: an apple or banana
+    // 3+: an apple, banana or an orange
+    private string FormatPhenotypes(List<ProtoId<BeastPhenotypePrototype>> ids)
+    {
+        if (ids.Count == 0)
+            return string.Empty;
+
+        var sb = new StringBuilder();
+        var first = ProtoMan.Index(ids[0]);
+        first.AddIndefinite(sb);
+        if (ids.Count == 1)
+            return sb.ToString();
+
+        if (ids.Count == 2)
+        {
+            sb.Append(" or ");
+            sb.Append(ProtoMan.Index(ids[1]).Name);
+            return sb.ToString();
+        }
+
+        for (var i = 1; i < ids.Count - 1; i++)
+        {
+            sb.Append(", ");
+            sb.Append(ProtoMan.Index(ids[i]).Name);
+        }
+
+        var last = ProtoMan.Index(ids[ids.Count - 1]);
+        sb.Append(" or ");
+        last.AddIndefinite(sb);
+        return sb.ToString();
     }
 }

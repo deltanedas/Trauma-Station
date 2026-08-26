@@ -1,0 +1,57 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: beastTrait
+  id: Illiterate
+  category: Sight
+  name: Illiterate
+  desc: You can't read or write, either through poor vision or information processing.
+  points: 1
+  mutation: MutationIlliterate
+
+- type: beastTrait
+  id: WeakPerception
+  category: Sight
+  name: Weak Perception
+  desc: You have almost no peripheral vision, making you only able to see almost directly infront of yourself.
+  points: 2
+  mutation: MutationWeakPerception
+
+- type: beastTrait
+  id: NearSighted
+  category: Sight
+  name: Near Sighted
+  desc: You have poor eyesight and can't see far away.
+  points: 2
+  mutation: MutationNearSightedness
+
+- type: beastTrait
+  id: Blind
+  category: Sight
+  name: Blind
+  desc: Your eyes can't make sense of visible light at all.
+  points: 4
+  mutation: MutationBlindness
+
+- type: beastTrait
+  id: EnhancedPerception
+  category: Sight
+  name: Enhanced Perception
+  desc: You have improved peripheral vision, letting you see things out of the corner of your eyes better.
+  points: -2
+  mutation: MutationEnhancedPerception
+
+- type: beastTrait
+  id: Farsight
+  category: Sight
+  name: Farsight
+  desc: Your eyes are adapted to seeing further than normal.
+  points: -2
+  mutation: MutationFarsight
+
+- type: beastTrait
+  id: ThermalVision
+  category: Sight
+  name: Thermal Vision
+  desc: Your eyes have infrared-receptive cone cells, letting you see warmth even through walls!
+  points: -6 # powergame vs just get it from sci 10m in for free
+  mutation: MutationThermalVision

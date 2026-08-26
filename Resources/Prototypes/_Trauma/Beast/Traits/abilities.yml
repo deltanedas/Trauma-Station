@@ -1,0 +1,73 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: beastTrait
+  id: VoidMagnet
+  category: Abilities
+  name: Void Magnet
+  desc: You sometimes get pulled away to a world of shadows.
+  points: 1 # annoying but also useful
+  mutation: MutationVoidMagnet
+
+- type: beastTrait
+  id: DogNose
+  category: Abilities
+  name: Canine Nose
+  desc: Your sense of smell is comparable to that of a greyhound.
+  points: -1
+  mutation: MutationDogNose
+
+- type: beastTrait
+  id: WebbingProduction
+  category: Abilities
+  name: Webbing Production
+  desc: Your body can produce spider silk and travel through cobwebs easily.
+  points: -1
+  mutation: MutationWebbingProduction
+
+- type: beastTrait
+  id: Cindikinesis
+  category: Abilities
+  name: Cindikinesis
+  desc: You can concentrate nearby heat into a pile of ash. Don't ask where your hair went.
+  points: -2
+  mutation: MutationCindikinesis
+
+- type: beastTrait
+  id: Geladikinesis
+  category: Abilities
+  name: Geladikinesis
+  desc: You can concentrate nearby moisture into snow.
+  points: -2
+  mutation: MutationGeladikinesis
+
+- type: beastTrait
+  id: Antenna
+  category: Abilities
+  name: Antenna
+  desc: You have an antenna sprouting out of your head, letting you always access the common radio channel.
+  points: -2
+  mutation: MutationAntenna
+
+- type: beastTrait
+  id: Pyrokinesis
+  category: Abilities
+  name: Pyrokinesis
+  desc: Your body is an all natural radiator, except the heat is a beam directed by your hands.
+  points: -6
+  mutation: MutationPyrokinesis
+
+- type: beastTrait
+  id: Cryokinesis
+  category: Abilities
+  name: Cryokinesis
+  desc: They call me Mister Freeze...
+  points: -7
+  mutation: MutationCryokinesis
+
+- type: BeastTrait
+  id: FireBreath
+  category: Abilities
+  name: Fire Breath
+  desc: Your lungs have been modified with space dragon genes, letting you spew flames from your mouth!
+  points: -8
+  mutation: MutationFireBreath

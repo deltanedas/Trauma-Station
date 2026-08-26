@@ -12,8 +12,6 @@
     conflicts:
     - MutationThermalAdaptation
     - MutationPressureAdaptation
-  - type: BeastMutation
-    points: -5 # powergaming my beloved
 
 - type: entity
   parent: BaseMutationAdaptation
@@ -22,6 +20,9 @@
   description: A strange mutation that renders the host immune to damage from low temperature environments.
   #It also prevents the host from slipping on ice.
   components:
+  - type: RemovesMutation
+    removes:
+    - MutationColdWeakness
   - type: ComponentMutation
     added:
     - type: SpecialLowTempImmunity
@@ -34,6 +35,9 @@
   name: Heat Adaptation
   description: A strange mutation that renders the host immune to damage from high temperature, including being set alight, though the flame itself still burns clothing. It also seems to make the host resist ash storms.
   components:
+  - type: RemovesMutation
+    removes:
+    - MutationHeatWeakness
   - type: ComponentMutation
     added:
     - type: SpecialHighTempImmunity
@@ -52,6 +56,7 @@
     rarity: Mythical
     conflicts:
     - MutationPressureAdaptation
+    - MutationThermalWeakness
   - type: RemovesMutation
     removes:
     - MutationColdAdaptation

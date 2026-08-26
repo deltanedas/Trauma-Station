@@ -10,8 +10,6 @@
     instability: 25
   - type: ActionMutation
     action: ActionMutationAdrenaline
-  - type: BeastMutation
-    points: -3
 
 - type: entity
   parent: BaseMutationAction
@@ -32,7 +30,7 @@
       # no Pump Up and using adrenaline instead of determination
       # synaptizine is a poison for some reason, so use stimulants instead
       reagents: [ Stimulants, Epinephrine ]
-      quantity: 5 # these are very strong so less amount than 13
+      quantity: 5 # these are very strong so lower amount than 13
       popup: MutationAdrenalineRush-inject-popup
     # no confusion system so theres no confusion reagent
     comedown:

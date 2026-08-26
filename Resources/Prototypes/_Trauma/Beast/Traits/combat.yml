@@ -1,0 +1,21 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: beastTrait
+  id: Weak
+  category: Combat
+  name: Weak
+  desc: Your noodle arms can't do much damage in fights. You do 40% less melee damage.
+  points: 2
+  mutation: MutationWeak
+  conflicts:
+  - Strong
+
+- type: beastTrait
+  id: Strong
+  category: Combat
+  name: Strong
+  desc: Your muscles are powerful and built for combat. You do 20% more melee damage.
+  points: -2
+  mutation: MutationStrength
+  conflicts:
+  - Weak

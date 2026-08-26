@@ -1,0 +1,18 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: beastTrait
+  id: Insulated
+  category: Skin
+  name: Insulated
+  desc: Your skin is like a rubber mesh, insulating your body from electric shocks. Not a very pleasant touch, though.
+  points: -4 # shitter major
+  mutation: MutationInsulated
+
+# chameleons exist...
+- type: beastTrait
+  id: Chameleon
+  category: Skin
+  name: Chameleon
+  desc: Your skin slowly changes colour to mimic your surroundings, making you harder to see. Luckily this also applies to your clothes, somehow.
+  points: -10 # yeah youre gonna be a crippled invisible shadowkin
+  mutation: MutationChameleon

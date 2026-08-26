@@ -242,9 +242,21 @@
   description: The user's muscles slightly expand. Commonly seen in top-ranking boxers.
   components:
   - type: Mutation
-    instability: 5
+    instability: 10
     difficulty: 16
   - type: StrengthMutation
+
+- type: entity
+  parent: BaseMutation
+  id: MutationWeak
+  name: Weak
+  description: The user's muscles are significantly atrophied, making them very weak.
+  components:
+  - type: Mutation
+    instability: -10
+    difficulty: 12
+  - type: StrengthMutation
+    meleeModifier: 0.6
   # TODO: exercise and fitness buffs
 
 - type: entity

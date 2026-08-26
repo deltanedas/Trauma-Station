@@ -15,8 +15,6 @@
     added:
     - type: PermanentBlindness
       blindness: 4
-  - type: BeastMutation
-    points: 2
 
 # Blind makes you blind. Who knew?
 # The above comment was brought to you by /tg/station13
@@ -34,8 +32,6 @@
   - type: ComponentMutation
     added:
     - type: PermanentBlindness
-  - type: BeastMutation
-    points: 4
 
 - type: entity
   parent: BaseMutation
@@ -53,8 +49,6 @@
     - type: ThermalVision
       toggleAction: MutationActionThermalVision
       pulseTime: 10
-  - type: BeastMutation
-    points: -8 # lol
 
 - type: entity
   parent: ToggleThermalVision
@@ -81,8 +75,6 @@
     added:
     - type: BlockReading
     - type: BlockWriting
-  - type: BeastMutation
-    points: 2
 
 - type: entity
   parent: BaseMutationAdmeme # wizard and admeme only
@@ -110,8 +102,6 @@
     - MutationWeakPerception
   - type: ViewconeModifier
     angleModifier: 1.3
-  - type: BeastMutation
-    points: -2
 
 - type: entity
   parent: BaseMutation
@@ -128,5 +118,3 @@
     - MutationEnhancedPerception
   - type: ViewconeModifier
     angleModifier: 0.5 # gotta thug it out
-  - type: BeastMutation
-    points: 2

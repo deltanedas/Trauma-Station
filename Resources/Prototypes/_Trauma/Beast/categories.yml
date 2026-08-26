@@ -1,0 +1,25 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: beastTraitCategory
+  category: Abilities
+  name: Abilities
+
+- type: beastTraitCategory
+  category: Biology
+  name: Biology
+
+- type: beastTraitCategory
+  category: Combat
+  name: Combat
+
+- type: beastTraitCategory
+  category: Sight
+  name: Sight
+
+- type: beastTraitCategory
+  category: Skin
+  name: Skin
+
+- type: beastTraitCategory
+  category: Thermal
+  name: Thermal

@@ -13,8 +13,6 @@
   - type: MutationActionOnTrigger
   - type: RandomTrigger
     prob: 0.0025 # :)
-  - type: BeastMutation
-    points: 1 # annoying but also useful
 
 - type: entity
   parent: BaseMutationAction

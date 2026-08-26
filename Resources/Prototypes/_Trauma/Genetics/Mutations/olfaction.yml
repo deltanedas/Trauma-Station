@@ -14,5 +14,3 @@
     added:
     - type: ScentTracker
   # TODO: huge shitcode needed for parity
-  - type: BeastMutation
-    points: -1

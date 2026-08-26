@@ -1,0 +1,69 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: beastTrait
+  id: ColdWeakness
+  category: Thermal
+  name: Cold Weakness
+  desc: Your body struggles to stay warm. Cold is far more dangerous.
+  points: 2
+  mutation: MutationColdWeakness
+  conflicts:
+  - ThermalWeakness
+  - HeatWeakness # have to pick thermal cant do both
+
+- type: beastTrait
+  id: HeatWeakness
+  category: Thermal
+  name: Heat Weakness
+  desc: Your body struggles to stay cool. Heat is far more dangerous.
+  points: 2
+  mutation: MutationHeatWeakness
+  conflicts:
+  - ThermalWeakness
+  - ColdWeakness # have to pick thermal cant do both
+
+- type: beastTrait
+  id: ThermalWeakness
+  category: Thermal
+  name: Homeostatic Shutdown
+  desc: Your body has almost no ability to maintain a safe temperature. Survival is a struggle.
+  points: 3
+  mutation: MutationThermalWeakness
+  conflicts:
+  - ColdWeakness
+  - HeatWeakness
+
+# powergaming my beloved
+- type: beastTrait
+  id: ColdAdaptation
+  category: Thermal
+  name: Cold Adaptation
+  desc: Your body is well adapted to retain heat in cold environments, you could even survive space with some pressure protection.
+  points: -2
+  mutation: MutationColdAdaptation
+  conflicts:
+  - ColdWeakness
+  - PressureAdaptation
+
+- type: beastTrait
+  id: HeatAdaptation
+  category: Thermal
+  name: Heat Adaptation
+  desc: Your body is well insulated from excess heat, perfect for lavaland or a burn chamber.
+  points: -2
+  mutation: MutationHeatAdaptation
+  conflicts:
+  - HeatWeakness
+  - PressureAdaptation
+
+- type: beastTrait
+  id: PressureAdaptation
+  category: Thermal
+  name: Pressure Adaptation
+  desc: Your whole body is capable of resisting extreme pressures without having your fluids boil away.
+  points: -5
+  mutation: MutationPressureAdaptation
+  # cant become a full god
+  conflicts:
+  - ColdAdaptation
+  - HeatAdaptation

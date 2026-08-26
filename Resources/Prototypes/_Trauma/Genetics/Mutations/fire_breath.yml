@@ -13,8 +13,6 @@
     locked: true # need to get it via lizard dormant mutation
   - type: ActionMutation
     action: ActionFireBreath
-  - type: BeastMutation
-    points: -8
 
 - type: entity
   parent: [ BaseMutationAction, ActionDragonsBreath ]

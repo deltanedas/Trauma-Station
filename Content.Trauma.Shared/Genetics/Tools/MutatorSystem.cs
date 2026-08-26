@@ -24,16 +24,7 @@ public sealed partial class MutatorSystem : EntitySystem
 
     private static readonly ProtoId<TagPrototype> TrashTag = "Trash";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<MutatorComponent, ExaminedEvent>(OnExamined);
-        SubscribeLocalEvent<MutatorComponent, AfterInteractEvent>(OnAfterInteract);
-        SubscribeLocalEvent<MutatorComponent, UseInHandEvent>(OnUseInHand);
-        SubscribeLocalEvent<MutatorComponent, MutatorDoAfterEvent>(OnDoAfter);
-    }
-
+    [SubscribeLocalEvent]
     private void OnExamined(Entity<MutatorComponent> ent, ref ExaminedEvent args)
     {
         if (!args.IsInDetailsRange)
@@ -45,6 +36,7 @@ public sealed partial class MutatorSystem : EntitySystem
         args.PushMarkup(Loc.GetString(msg));
     }
 
+    [SubscribeLocalEvent]
     private void OnAfterInteract(Entity<MutatorComponent> ent, ref AfterInteractEvent args)
     {
         if (args.Handled || !args.CanReach || args.Target is not {} target)
@@ -54,6 +46,7 @@ public sealed partial class MutatorSystem : EntitySystem
         StartInject(ent, target, args.User);
     }
 
+    [SubscribeLocalEvent]
     private void OnUseInHand(Entity<MutatorComponent> ent, ref UseInHandEvent args)
     {
         if (args.Handled)
@@ -102,6 +95,7 @@ public sealed partial class MutatorSystem : EntitySystem
         _popup.PopupEntity(you, others, ent, target);
     }
 
+    [SubscribeLocalEvent]
     private void OnDoAfter(Entity<MutatorComponent> ent, ref MutatorDoAfterEvent args)
     {
         if (!_timing.IsFirstTimePredicted || args.Cancelled || args.Target is not {} target)

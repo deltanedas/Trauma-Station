@@ -10,8 +10,6 @@
     instability: 10 # how is this good?
   - type: ActionMutation
     action: ActionMutationAutotomy
-  - type: BeastMutation
-    points: -1
 
 - type: entity
   parent: BaseMutationAction

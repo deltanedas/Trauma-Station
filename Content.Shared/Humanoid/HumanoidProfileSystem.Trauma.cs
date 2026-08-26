@@ -77,7 +77,7 @@ public sealed partial class HumanoidProfileSystem
     public void SetBeastProfile(Entity<HumanoidProfileComponent> ent, BeastProfile? beast)
     {
         // sanity check, never allow beast profiles for wrong species
-        if (!_prototype.Index(ent.Comp.Species).Beast)
+        if (!ProtoMan.Index(ent.Comp.Species).Beast)
             beast = null;
 
         // handle updates that change costs etc

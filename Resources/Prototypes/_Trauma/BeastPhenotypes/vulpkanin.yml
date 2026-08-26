@@ -1,8 +1,0 @@
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
-- type: beastPhenotype
-  id: Vulpkanin
-  partsRsi: Mobs/Species/Vulpkanin/parts.rsi
-  organsRsi: Mobs/Species/Vulpkanin/organs.rsi
-  displacementsRsi: Mobs/Species/Vulpkanin/displacement.rsi
-  cost: 2

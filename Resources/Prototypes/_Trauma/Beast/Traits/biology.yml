@@ -1,0 +1,42 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: beastTrait
+  id: Mute
+  category: Biology
+  name: Mute
+  desc: Your throat completely lacks vocal folds, preventing you from speaking any kind of language.
+  points: 2
+  mutation: MutationMute
+
+- type: beastTrait
+  id: Autotomy
+  category: Biology
+  name: Autotomy
+  desc: You can painlessly sever your limbs at will, much like newts and other reptiles.
+  points: -1
+  mutation: MutationAutotomy
+
+- type: beastTrait
+  id: AdrenalineRush
+  category: Biology
+  name: Adrenaline Rush
+  desc: You can consciously trigger an adrenaline response at will. Push your body to the limit!
+  points: -3
+  mutation: MutationAdrenalineRush
+
+# shadowkin shit
+- type: beastTrait
+  id: Telepathy
+  categories: Biology
+  name: Telepathy
+  desc: Your mind is powerful enough to project your thoughts onto others beings.
+  points: -4
+  mutation: MutationTelepathy
+
+- type: beastTrait
+  id: MindReader
+  category: Abilities
+  name: Mind Reader
+  desc: Your mind can detect the brainwaves of other beings, letting you look into their recent memories.
+  points: -5
+  mutation: MutationMindReader
