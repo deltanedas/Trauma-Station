@@ -1,4 +1,5 @@
 <BoxContainer xmlns="https://spacestation14.io"
+    xmlns:controls="using:Content.Client.UserInterface.Controls"
     Orientation="Vertical">
     <!-- Info about the current alert level -->
     <BoxContainer HorizontalAlignment="Center">
@@ -19,4 +20,11 @@
             Text="{Loc 'comms-console-confirm-alert-level-button'}"
             Disabled="True" />
     </BoxContainer>
+    <!-- <Trauma> - Show unlock time for locked alert level -->
+    <BoxContainer Name="UnlockContainer" Margin="0 2" HorizontalAlignment="Center">
+        <controls:StripeBack>
+            <Label Name="UnlockLabel" Margin="8 4"/>
+        </controls:StripeBack>
+    </BoxContainer>
+    <!-- </Trauma> -->
 </BoxContainer>

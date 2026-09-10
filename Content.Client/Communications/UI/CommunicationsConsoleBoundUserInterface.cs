@@ -30,7 +30,7 @@ public sealed partial class CommunicationsConsoleBoundUserInterface(EntityUid ow
         base.Open();
 
         _menu = this.CreateWindow<CommunicationsConsoleMenu>();
-        _menu.AlertLevel = _alertLevel; // Trauma
+        _menu.SetAlertLevel(_alertLevel); // Trauma
         _menu.OnRadioAnnounce += RadioAnnounceButtonPressed;
         _menu.OnScreenBroadcast += ScreenBroadcastButtonPressed;
         _menu.OnAlertLevelChanged += AlertLevelSelected;
@@ -88,10 +88,7 @@ public sealed partial class CommunicationsConsoleBoundUserInterface(EntityUid ow
 
         if (_menu != null)
         {
-            // <Trauma>
-            _menu.Station = stationUid.Value;
-            _menu.UpdateUnlock();
-            // </Trauma>
+            _menu.SetStation(stationUid.Value); // Trauma
             var currentAlertLevel = alertComp.CurrentAlertLevel;
             var selectableAlertLevels = _alertLevel.GetSelectableAlertLevels((stationUid.Value, alertComp));
             var canChangeAlertLevel = _alertLevel.CanChangeAlertLevel((stationUid.Value, alertComp));
