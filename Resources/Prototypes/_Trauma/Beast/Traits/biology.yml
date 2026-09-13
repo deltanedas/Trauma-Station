@@ -1,6 +1,14 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: beastTrait
+  id: Radioactive
+  category: Biology
+  name: Radioactive
+  desc: Your body emits lots of beta radiation. Unfortunately, you aren't immune to it either.
+  points: 2
+  mutation: MutationRadioactivity
+
+- type: beastTrait
   id: Mute
   category: Biology
   name: Mute
@@ -35,7 +43,7 @@
 
 - type: beastTrait
   id: MindReader
-  category: Abilities
+  category: Biology
   name: Mind Reader
   desc: Your mind can detect the brainwaves of other beings, letting you look into their recent memories.
   points: -5
