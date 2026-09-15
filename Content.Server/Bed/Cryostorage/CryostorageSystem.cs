@@ -208,7 +208,7 @@ public sealed partial class CryostorageSystem : SharedCryostorageSystem
             if (userId != null && Mind.TryGetMind(userId.Value, out var mind) &&
                 HasComp<CryostorageContainedComponent>(mind.Value.Comp.CurrentEntity))
             {
-                _ghostSystem.OnGhostAttempt(mind.Value, false);
+                _ghostSystem.OnGhostAttempt(mind.Value, false, forced: true); // Trauma - force it so you cant teleport to nullspace as a ling etc if you get cryod while dead
             }
         }
 
