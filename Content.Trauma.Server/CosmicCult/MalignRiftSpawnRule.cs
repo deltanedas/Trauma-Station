@@ -1,12 +1,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
-using Content.Trauma.Server.CosmicCult;
-using Content.Trauma.Server.CosmicCult.Components;
-using Content.Trauma.Server.CosmicCult.EntitySystems;
 using Content.Server.Chat.Systems;
-using Content.Server.GameTicking;
 using Content.Server.Ghost;
+using Content.Shared.GameTicking;
 using Content.Shared.Light.Components;
 using Content.Shared.Station.Components;
 using Content.Server.StationEvents.Components;
@@ -14,6 +11,10 @@ using Content.Server.StationEvents.Events;
 using Content.Shared.Database;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Humanoid;
+using Content.Trauma.Server.CosmicCult;
+using Content.Trauma.Server.CosmicCult.Components;
+using Content.Trauma.Server.CosmicCult.EntitySystems;
+using Content.Trauma.Shared.GameTicking.Rules;
 using Robust.Server.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Player;
