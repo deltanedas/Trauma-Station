@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: adminVerb
+  id: AdminSmiteOmniAccent
+  effects:
+  - !type:AddComponents
+    components:
+    - GlorpAccent
+    - MedievalAccent
+    - OhioAccent
+    - PirateAccent
+    - DementiaAccent
+    - CavemanAccent
