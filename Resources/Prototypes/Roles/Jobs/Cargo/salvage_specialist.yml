@@ -13,6 +13,7 @@
   - Salvage
   - Cargo
   supervisors: job-supervisors-qm
+  guides: [ Salvage ]
   access:
   - Cargo
   - Salvage
