@@ -15665,3 +15665,12 @@ Entries:
   id: 1705
   time: '2026-10-10T20:23:29.0000000+00:00'
   url: https://github.com/Trauma-Station/Trauma-Station/pull/4982
+- author: deltanedas
+  changes:
+  - type: Fix
+    message: >-
+      Fixed blood cult not having ritual sites or a sac target when rolled
+      naturally.
+  id: 1706
+  time: '2026-10-10T23:34:17.0000000+00:00'
+  url: https://github.com/Trauma-Station/Trauma-Station/pull/4988
